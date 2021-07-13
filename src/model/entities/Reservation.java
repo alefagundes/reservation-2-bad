@@ -15,7 +15,7 @@ public class Reservation {
 		Date now = new Date();
 		if(!checkout.after(checkin)){
 		throw new DomainException("Check-out date must be after check-in date!");
-		}else if(!checkout.after(now) || checkin.before(now)) {
+		}else if(!checkout.after(checkin) || checkin.before(now) && checkout.before(now)) {
 			throw new DomainException("Dates must be after today!");
 		}
 		this.room = room;
